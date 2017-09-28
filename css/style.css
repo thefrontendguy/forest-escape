@@ -289,7 +289,7 @@ body {
 }
 
 .circle.hello:before {
-  content: "HI! Guess where I will leave the forrest!";
+  content: "HI! Guess where I will leave the forest!";
   width: 200px;
   font-size: 11px;
   position: absolute;
