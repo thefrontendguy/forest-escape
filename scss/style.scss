@@ -1,0 +1,301 @@
+@font-face {
+	font-family: 'Product Sans';
+	src: url('fonts/ProductSans-Bold.eot');
+	src: url('fonts/ProductSans-Bold.eot?#iefix') format('embedded-opentype'),
+		url('fonts/ProductSans-Bold.woff') format('woff'),
+		url('fonts/ProductSans-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Product Sans';
+	src: url('fonts/ProductSans-Regular.eot');
+	src: url('fonts/ProductSans-Regular.eot?#iefix') format('embedded-opentype'),
+		url('fonts/ProductSans-Regular.woff') format('woff'),
+		url('fonts/ProductSans-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+$font: 'Product Sans';
+body {
+    font-family: $font;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    color: #444;
+    background: #def7ec;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.headline {
+	width: 100%;
+	margin-top: -13px;
+	& h1 {
+		text-align: center;
+		font-size: 24px;
+		background: green;
+		color: white;
+		padding: 10px 0;
+	}
+}
+.info {
+	display: flex;
+	justify-content: center;
+	font-size: 18px;
+	font-weight: lighter;
+	& #text {
+		text-align: center;
+		padding: 0 20px;
+	}
+}
+.pyramid-container {
+	//background: yellow;
+	width: 270px;
+	height: 270px;
+	margin-top: 45px;
+	position: relative;
+	& .pyramid {
+		background: red;
+	}
+}
+$border-top: 15px;
+.triangle {
+	width: 30px;
+	height: 30px;
+
+	box-shadow: inset 0 0 10px grey;
+	//background: red;
+	border: 0 solid transparent;
+	border-bottom: $border-top*2 solid green;
+	border-left: 20px solid transparent;
+	border-right: 10px solid transparent;
+	
+	//border-radius: 20px;
+
+	box-sizing: border-box;
+
+	position: absolute;
+	z-index: 1;
+	animation: 1.5s treeShake ease-in-out infinite;
+	@keyframes treeShake {
+		from {
+			border-left: 20px solid transparent;
+			border-right: 10px solid transparent;			
+		}
+		50%, 55% {
+			border-left: 10px solid transparent;
+			border-right: 20px solid transparent;			
+		}
+		to {
+			border-left: 20px solid transparent;
+			border-right: 10px solid transparent;			
+		}
+	}
+	&:before {
+		content: "";
+		width: 7px;
+		height: 10px;
+		background: brown;
+		bottom: -39px;
+		left: -5px;
+		position: absolute;
+		z-index: 0;
+		animation: none;
+	}
+	&.l1 {
+		bottom: 240px;
+		&.t1 {
+			left: 90px;
+		}
+		&.t2 {
+			left: 150px;
+		}
+
+	}
+	&.l2 {
+		bottom: 180px;
+		&.t1 {
+			left: 60px;
+		}
+		&.t2 {
+			left: 120px;
+		}
+		&.t3 {
+			left: 180px;
+		}
+	}
+	&.l3 {
+		bottom: 120px;
+		&.t1 {
+			left: 30px;
+		}
+		&.t2 {
+			left: 90px;
+		}
+		&.t3 {
+			left: 150px;
+		}
+		&.t4 {
+			left: 210px;
+		}
+	}
+	&.l4 {
+		bottom: 60px;
+		&.t1 {
+			left: 0;
+		}
+		&.t2 {
+			left: 60px;
+		}
+		&.t3 {
+			left: 120px;
+		}
+		&.t4 {
+			left: 180px;
+		}
+		&.t5 {
+			left: 240px;
+		}
+	}
+	&.goal {
+		bottom: 0;
+		border: green 2px solid;
+		border-top-color: transparent;
+		box-shadow: none;
+		animation: initial;
+
+		font-size: 16px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		cursor: pointer;
+
+		&.t1 {
+			left: 30px;
+		}
+		&.t2 {
+			left: 90px;
+		}
+		&.t3 {
+			left: 150px;
+		}
+		&.t4 {
+			left: 210px;
+		}
+	}
+}
+#goal-1,
+#goal-2,
+#goal-3,
+#goal-4 {
+	background: #fff;
+	&:hover {
+		background: lightgreen;	
+	}	
+	&.active {
+		background: lightgreen;	
+	}
+	&:before {
+		display: none;
+	}	
+}
+
+.circle {
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	bottom: 250px;
+	left: 125px;
+	border-radius: 50%;
+	background: red;
+	transition: .5s all ease-in-out;
+	opacity: 1;
+	z-index: 2;
+	&.hello:before {
+		content: "HI! Guess where I will leave the forrest!";
+		width: 200px;
+		font-size: 11px;
+		position: absolute;
+		left: -100px;
+		bottom: 30px;
+		color: red;
+		opacity: 0;
+		animation: 5s movesInside ease;
+	}	
+	@keyframes movesInside {
+		from {opacity: 0;}	
+		25% {opacity: 1;}	
+		50% {opacity: 0;}	
+		75% {opacity: 1;}	
+		to {opacity: 0;}	
+	}	
+	&.waiting:after {
+		content: "?";
+		position: absolute;
+		top: -19px;
+		left: 3px;
+		font-size: 18px;
+		animation: .5s waiting infinite;
+	}	
+	@keyframes waiting {
+		from {transform: scale(.5,.5); bottom: 5px;}
+		40% {transform: scale(1,1);bottom: 10px;}
+		to {transform: scale(.5,.5);bottom: 5px;}
+	}	
+}
+#guess {
+	margin-top: 10px;
+	font-size: 20px;
+}
+#your-guess {
+	margin-top: 10px;
+	font-size: 30px;
+	font-weight: bold;
+}
+#startGameButton {
+	cursor: pointer;
+	margin-top: 10px;
+	border: none;
+	padding: 15px 30px;
+	background: linear-gradient(green, #026902);
+	color: white;
+	box-shadow: 2px 2px 3px darkgray;
+	&:not(:disabled):hover {
+		background: linear-gradient(#026902, #017201);
+		color: white;
+		box-shadow: 1px 1px 2px darkgray;
+	}
+	&:disabled {
+		background: grey;
+		color: #ddd;
+	}
+}
+
+#result {
+	position: absolute;
+	top: -350px;
+    width: 100%;
+	justify-content: center;
+	text-align: center;
+    z-index: 2;
+    padding: 30px;
+    transform: rotate(-8deg);
+	border: 6px solid white;
+	transition:  .65s all ease;
+	color: white;
+	box-shadow: 0 10px 20px #ddd;
+	&.won {
+		top: 260px;
+		background: green;
+	}
+	&.lost {
+		top: 260px;
+		background: red;
+	}
+}
