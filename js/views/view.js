@@ -16,7 +16,7 @@ var view = {
     },
     yourGuess: function(guess) {
         document.getElementById("your-guess").innerHTML = guess;
-        this.disableStartGameButton();
+        this.enableStartGameButton();
     },
     resultDisplayWon: function(message) {
         document.getElementById("result").innerHTML = message; 
@@ -35,10 +35,10 @@ var view = {
         document.getElementById("circle").removeAttribute("style"); 
     },
     enableStartGameButton: function() {
-        document.getElementById("startGameButton").disabled = true;
+        document.getElementById("startGameButton").disabled = false;
     },
     disableStartGameButton: function() {
-        document.getElementById("startGameButton").disabled = false;
+        document.getElementById("startGameButton").disabled = true;
 
     }
 }

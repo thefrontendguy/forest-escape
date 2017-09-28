@@ -27,9 +27,9 @@ var controller = {
                 switch(step) {
                     case "down":
                     moveDown();
-                    controller.view.waiting();
                     break;
                     case "wait":
+                    controller.view.waiting();
                     break;
                     case "sideways":
                     controller.view.waitingEnded();
@@ -110,11 +110,12 @@ var controller = {
                 }, 1000);
             },
             gameEnded: function() {
+                this.view.disableStartGameButton();                
                 setTimeout(function() {
                     this.view.resetGame();
                     model.startPosX =  125;
                     model.startPosY = 250;
-                    this.view.disableStartGameButton();
+                    this.view.enableStartGameButton();
                     
                 }, 5000);
             }
